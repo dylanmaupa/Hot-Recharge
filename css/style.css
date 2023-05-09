@@ -131,6 +131,10 @@ table {
   border-spacing: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "poppinsRegular";
 }
@@ -152,6 +156,139 @@ body {
   --bg3-color: #0a0a0a;
 }
 
+header {
+  width: 70%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 80px;
+  position: absolute;
+}
+header .logo {
+  width: 20%;
+}
+header .hamburger {
+  display: none;
+}
+header .nav-Bar {
+  display: flex;
+  flex-direction: row;
+}
+header .nav-Bar ul {
+  display: flex;
+}
+header .nav-Bar ul li a {
+  display: block;
+  font-size: 18px;
+  padding: 10px 20px;
+  transition: 0.2s;
+  margin: 0 5px;
+  color: #fff;
+  text-decoration: none;
+}
+header .nav-Bar ul li .active {
+  font-size: 18px;
+  color: rgb(255, 0, 0);
+  background: #fff;
+  border-radius: 5px;
+  font-family: "poppinsSemiBold";
+}
+header .nav-Bar ul li a:hover {
+  color: rgb(255, 0, 0);
+  font-size: 18px;
+  transition: 0.2s;
+}
+header .nav-Bar .dark-theme-btn i {
+  font-size: 35px;
+  cursor: pointer;
+  position: fixed;
+  z-index: 9;
+  margin-left: 70px;
+  color: var(--icon-color);
+}
+
+@media only screen and (max-width: 1320px) {
+  header {
+    padding: 0 50px;
+  }
+}
+@media only screen and (max-width: 1100px) {
+  header {
+    padding: 0 30px;
+  }
+  header .nav-Bar ul li a {
+    font-size: 16px;
+  }
+}
+@media only screen and (max-width: 900px) {
+  header .logo {
+    width: 30%;
+  }
+  header .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+  header .hamburger .line {
+    width: 30px;
+    height: 5px;
+    border-radius: 5px;
+    background: var(--text-color);
+    margin: 6px 0;
+  }
+  header .nav-Bar {
+    height: 0;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    background: var(--bg-color);
+    transition: 200ms;
+    overflow: hidden;
+    color: var(--icon-color);
+  }
+  header .nav-Bar ul {
+    display: block;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: 80px auto 0 auto;
+    text-align: center;
+    transition: 500ms;
+    opacity: 0;
+  }
+  header .nav-Bar ul li .active {
+    font-size: 25px;
+    background: none;
+    color: rgb(255, 0, 0);
+    font-family: "poppinsRegular";
+  }
+  header .nav-Bar ul li a {
+    margin-bottom: 12px;
+    font-size: 25px;
+    color: var(--text-color);
+  }
+  header .nav-Bar.active {
+    height: 480px;
+    z-index: 3;
+  }
+  header .nav-Bar.active ul {
+    opacity: 1;
+  }
+}
+@media only screen and (max-width: 500px) {
+  header {
+    width: 90%;
+    padding-inline: 10px;
+  }
+  header .logo {
+    width: 70%;
+  }
+  header .logo img {
+    width: 100%;
+  }
+}
 #hero {
   background: url(../img/background-hero.png);
   background-position: center;
@@ -348,6 +485,7 @@ body {
 #testimonials {
   padding-top: 20%;
   color: var(--text-color);
+  background: var(--bg-color);
 }
 #testimonials h2 {
   font-size: 30px;
@@ -393,6 +531,7 @@ body {
 
 #contact {
   color: var(--text-color);
+  background: var(--bg-color);
 }
 #contact h2 {
   font-size: 30px;
@@ -576,11 +715,15 @@ footer .copyright p {
   }
   #hero .hero-inner-md {
     display: flex;
+    padding-top: 100px;
     background: var(--overlay-color);
     padding: 50px 100px;
     align-items: center;
     justify-content: center;
     gap: 100px;
+  }
+  #hero .hero-inner-md .text {
+    color: var(--text-color);
   }
   #hero .hero-inner-md .text h1 {
     font-family: "poppinsBold";
@@ -723,7 +866,7 @@ footer .copyright p {
     margin-block: 20px;
   }
   #contact {
-    margin-top: 100px;
+    padding-top: 100px;
   }
   #contact h2 {
     font-size: 60px;
